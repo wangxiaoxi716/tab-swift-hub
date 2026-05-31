@@ -1,19 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Tab Out",
+  "name": "Tab Hub",
   "version": "1.0.0",
   "description": "Keep tabs on your tabs. New tab page that groups your open tabs by domain and lets you close them with style.",
-  "permissions": ["tabs", "activeTab", "storage"],
+  "permissions": ["tabs", "activeTab", "storage", "favicon"],
   "chrome_url_overrides": { "newtab": "index.html" },
-  "background": { "service_worker": "background.js" },
-  "action": {
-    "default_title": "Tab Out",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png"
-    }
-  },
-  "icons": {
+"icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
