@@ -459,64 +459,39 @@ header {
   justify-content: center;
   background: none;
   border: none;
-  color: var(--muted);
+  color: var(--ink-muted);
   cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  opacity: 0.35;
-  transition: opacity 0.15s, color 0.15s, background 0.15s;
+  padding: 3px;
+  border-radius: 3px;
+  transition: color 0.1s, background 0.1s;
   flex-shrink: 0;
   position: relative;
 }
 
 .chip-action::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text);
-  color: var(--bg);
-  font-size: 11px;
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  font-weight: 400;
-  padding: 3px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.1s;
-  z-index: 10;
-}
-
-.chip-action:hover::after {
-  opacity: 1;
+  display: none;
 }
 
 .chip-action svg {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
 }
 
-.chip-action:hover {
+.chip-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.page-chip:hover .chip-actions {
   opacity: 1;
-  background: rgba(154, 145, 138, 0.1);
 }
 
-.chip-duplicate:hover {
-  color: var(--accent-blue, #5a7ab2);
-  background: rgba(90, 122, 178, 0.08);
-}
-
-.chip-save:hover {
-  color: var(--accent-sage);
-  background: rgba(90, 122, 98, 0.08);
-}
-
-.chip-close:hover {
-  color: var(--status-abandoned);
-  background: rgba(179, 90, 90, 0.08);
-}
+.chip-duplicate:hover { color: var(--accent-amber); }
+.chip-save:hover      { color: var(--accent-sage); }
+.chip-close:hover     { color: var(--status-abandoned); }
 
 .page-chip.clickable {
   cursor: pointer;
