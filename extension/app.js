@@ -874,7 +874,7 @@ function renderDeferredItem(item) {
     <div class="deferred-item" data-deferred-id="${item.id}">
       <input type="checkbox" class="deferred-checkbox" data-action="check-deferred" data-deferred-id="${item.id}">
       <div class="deferred-info">
-        <a href="${item.url}" target="_blank" rel="noopener" class="deferred-title" title="${(item.title || '').replace(/"/g, '&quot;')}">
+        <a href="${item.url}" target="_blank" rel="noopener" class="deferred-title" data-action="open-deferred" data-deferred-id="${item.id}" title="${(item.title || '').replace(/"/g, '&quot;')}">
           <img src="${faviconUrl}" alt="" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px">${item.title || item.url}
         </a>
         <div class="deferred-meta">
@@ -1251,6 +1251,24 @@ document.addEventListener('click', async (e) => {
           renderDeferredColumn(); // refresh counts and archive
         }, 300);
       }, 800);
+    }
+    return;
+  }
+
+  // ---- Open a deferred tab link and remove it from the list ----
+  if (action === 'open-deferred') {
+    const id = actionEl.dataset.deferredId;
+    if (!id) return;
+
+    await dismissSavedTab(id);
+
+    const item = actionEl.closest('.deferred-item');
+    if (item) {
+      item.classList.add('removing');
+      setTimeout(() => {
+        item.remove();
+        renderDeferredColumn();
+      }, 300);
     }
     return;
   }
